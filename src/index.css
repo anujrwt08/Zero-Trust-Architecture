@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MedVault Zero Design System - Zero-Trust Healthcare Security */
+
+@layer base {
+  :root {
+    /* Core Navy - Trust & Authority */
+    --background: 220 30% 6%;
+    --foreground: 210 40% 98%;
+
+    /* Cards with glassmorphism effect */
+    --card: 220 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Deep Teal for Healthcare Trust */
+    --primary: 174 60% 45%;
+    --primary-foreground: 220 30% 6%;
+
+    /* Secondary - Muted Navy */
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Electric Cyan for Security Elements */
+    --accent: 185 80% 50%;
+    --accent-foreground: 220 30% 6%;
+
+    /* Destructive - Alert Red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Warning - Amber for Security Alerts */
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 30% 6%;
+
+    /* Success - Secure Green */
+    --success: 142 71% 45%;
+    --success-foreground: 220 30% 6%;
+
+    /* Borders and inputs */
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 174 60% 45%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 28% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 174 60% 45%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 25% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 20% 15%;
+    --sidebar-ring: 174 60% 45%;
+
+    /* Custom Security Tokens */
+    --encrypted: 185 80% 50%;
+    --decrypted: 142 71% 45%;
+    --honeytoken: 38 92% 50%;
+    --shield: 174 60% 45%;
+
+    /* Gradients */
+    --gradient-security: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(220 25% 12%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(174 60% 45%) 0%, hsl(185 80% 50%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    --gradient-alert: linear-gradient(135deg, hsl(0 72% 51%) 0%, hsl(15 80% 55%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+}
+
+@layer utilities {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  /* Security Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.5);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px -5px hsl(var(--accent) / 0.4);
+  }
+
+  .glow-warning {
+    box-shadow: 0 0 30px -5px hsl(var(--warning) / 0.5);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 30px -5px hsl(var(--success) / 0.4);
+  }
+
+  /* Encryption Animation */
+  @keyframes encrypt-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-encrypt {
+    animation: encrypt-pulse 2s ease-in-out infinite;
+  }
+
+  /* Shield Pulse */
+  @keyframes shield-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  .animate-shield {
+    animation: shield-pulse 3s ease-in-out infinite;
+  }
+
+  /* Scan Line Effect */
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .animate-scan {
+    animation: scan 2s linear infinite;
+  }
+
+  /* Security Grid Pattern */
+  .security-grid {
+    background-image: 
+      linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Honeytoken Indicator */
+  @keyframes honeytoken-glow {
+    0%, 100% { box-shadow: 0 0 20px -5px hsl(var(--warning) / 0.6); }
+    50% { box-shadow: 0 0 40px -5px hsl(var(--warning) / 0.8); }
+  }
+
+  .animate-honeytoken {
+    animation: honeytoken-glow 1.5s ease-in-out infinite;
+  }
+
+  /* Gradient Text */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Status Badge Variants */
+  .status-encrypted {
+    @apply bg-accent/20 text-accent border-accent/30;
+  }
+
+  .status-decrypted {
+    @apply bg-success/20 text-success border-success/30;
+  }
+
+  .status-alert {
+    @apply bg-destructive/20 text-destructive border-destructive/30;
+  }
+
+  .status-warning {
+    @apply bg-warning/20 text-warning border-warning/30;
+  }
+}
